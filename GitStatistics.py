@@ -25,6 +25,7 @@ for repo in repositories:
     try:
         commits.append(repo.get_commits().totalCount)
 
+        # Gather source code lines per programming language
         contents = repo.get_contents("")
         while contents:
             file_content = contents.pop(0)
@@ -46,10 +47,7 @@ for repo in repositories:
     releases.append(repo.get_releases().totalCount)
     closed_issues.append(repo.get_issues(state='closed').totalCount)
 
-    # Gather source code lines per programming language
-
-
-# Generate report
+# Print statistics
 print("Repository Statistics:")
 print("Total Commits:", sum(commits))
 print("Median Commits:", statistics.median(commits))
