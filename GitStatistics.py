@@ -2,7 +2,7 @@ from github import Github
 import statistics
 
 # Access GitHub API using Personal Access Token
-g = Github('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')
+g = Github('<PERSONAL ACCESS TOKEN>')
 
 # Access Kaggle's repositories
 kaggle = g.get_user('Kaggle')
