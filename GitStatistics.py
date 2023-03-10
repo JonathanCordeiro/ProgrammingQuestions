@@ -1,12 +1,15 @@
 from github import Github
 import statistics
 
+# Enter user in which to gather statistics from
+username = 'Kaggle'
+
 # Access GitHub API using Personal Access Token
 g = Github('<PERSONAL ACCESS TOKEN>')
 
-# Access Kaggle's repositories
-kaggle = g.get_user('Kaggle')
-repositories = kaggle.get_repos()
+# Access user repositories
+user = g.get_user(username)
+repositories = user.get_repos()
 
 # Initialize variables to store statistics specified in question
 commits = []
