@@ -2,7 +2,7 @@ from github import Github
 import statistics
 
 # Access GitHub API using Personal Access Token
-g = Github('<PERSONAL ACCESS TOKEN>')
+g = Github('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')
 
 # Access Kaggle's repositories
 kaggle = g.get_user('Kaggle')
@@ -66,6 +66,7 @@ print("Median Releases:", statistics.median(releases))
 print("Total Closed Issues:", sum(closed_issues))
 print("Median Closed Issues:", statistics.median(closed_issues))
 
+# Printing the coding languages used
 print("\nSource Code Lines per Programming Language:")
 for language, lines in languages.items():
     print(language.upper(), ":", lines)
