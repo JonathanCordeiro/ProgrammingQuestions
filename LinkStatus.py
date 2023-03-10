@@ -5,6 +5,9 @@ import os
 import re
 import requests
 
+# Specify directory to look in
+directory = 'test.zip'
+
 # Defining different counters for link types
 successLinks = 0
 redirectionLinks = 0
@@ -15,14 +18,19 @@ validLinks = 0
 validLinksList = []
 invalidURLs = []
 
-# Code to extract all files from a specified zip folder
-with zipfile.ZipFile('test.zip', 'r') as ref:
-    ref.extractall("test")
+# Code to extract all files from a specified zip folder if the directory is zip
+if directory.endswith('.zip'):
+    with zipfile.ZipFile(directory, 'r') as ref:
+        newDirectory = directory.split('.zip')[0]
+        ref.extractall(newDirectory)
+        files = os.listdir(f"{newDirectory}/{newDirectory}/")
+        os.chdir(f'{newDirectory}/{newDirectory}')
+else:
+    files = os.listdir(f"{directory}")
+    os.chdir(f"{directory}")
 
-files = os.listdir("test/test/")
 # print(files)
 
-os.chdir('test/test')
 
 for file in files:
     if file.endswith('.txt') or file.endswith('.html') or file.endswith('.rtf'):
